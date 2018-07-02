@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './comment.css';
+import './message.css';
 import IoEdit from 'react-icons/lib/io/edit';
 import IoTrashA from 'react-icons/lib/io/trash-a';
 
-export default class Comment extends Component {
+export default class Message extends Component {
     constructor(props){
     super(props);
     this.state = {
@@ -22,9 +22,9 @@ export default class Comment extends Component {
     }
 
     edit( event ) {
-        console.log('this.state.Comment')
+        console.log('this.state.Story')
         let {text} = this.state; 
-        console.log('this.props.Comment',this.props)
+        console.log('this.props.Story',this.props)
         let {id, edit} = this.props;
         if( event.key === "Enter" && this.state.text.length !== 0 ) {
           edit(id, text);

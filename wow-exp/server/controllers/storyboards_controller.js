@@ -1,4 +1,4 @@
-let comments = [
+let storyboards = [
     {text: "Vanilla Wow is the best content, there was no need to change it.",
      expansion: 'Vanilla',
      id: 0
@@ -11,43 +11,47 @@ let comments = [
 let id = 2;
 
 module.exports = {
+
     create: (req,res) => {
         const {text, expansion} = req.body;
-        newComment = {
+        newStoryboard = {
             text: text,
             expansion: expansion,
             id: id
         }
-        comments.push(newComment);
+        storyboards.push(newStoryboard);
         id++; 
-        res.status(200).json(comments);
+        res.status(200).json(storyboards);
         },
+
     read:(req, res) => {
-            res.status(200).json(comments);
+            res.status(200).json(storyboards);
     },
+
     update:(req ,res) => {
         const {text} = req.body; 
         const updateID =req.params.id;
-        const index = comments.findIndex(comment => comment.id == updateID);
-        let comment = comments[index];
-        comments[index] = {
-            text: text || comment.text,
-            expansion: comment.expansion,
-            id: comment.id,
+        const index = storyboards.findIndex(story => story.id == updateID);
+        let story = storyboards[index];
+        storyboards[index] = {
+            text: text || story.text,
+            expansion: story.expansion,
+            id: story.id,
         };
-        res.status(200).json(comments); 
+        res.status(200).json(storyboards); 
     },
+
     delete: (req, res) => {
         deleteID = req.params.id; 
-        const index = comments.findIndex(comment => comment.id == deleteID);
-        comments.splice(index,1);
-        res.status(200).json(comments);
+        const index = storyboards.findIndex(story => story.id == deleteID);
+        storyboards.splice(index,1);
+        res.status(200).json(storyboards);
     },
     
     getByExpanison: (req, res) => {
         const  {expansion}  = req.query;
         console.log('getByExpansion',expansion)
-        let filteredComments = comments.filter(comment => comment.expansion == expansion)
-        res.status(200).json(filteredComments);
+        let filteredStoryboards = storyboards.filter(story => story.expansion == expansion)
+        res.status(200).json(filteredStoryboards);
     }
 }  

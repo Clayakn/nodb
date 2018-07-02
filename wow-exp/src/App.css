@@ -10,21 +10,18 @@ body {
     color: white;
 }
 
-.comments {
-    color: white;
- }
-
 .standardButton {
     height: 50px;
     width: 100px;
 }
 
-.commentBox {
+.storyBox {
   height: 100px; 
   width: 500px;
 }
-.commentLine {
-    width: 60%;
+
+.storyLine {
+    max-width: 900px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;;
 }

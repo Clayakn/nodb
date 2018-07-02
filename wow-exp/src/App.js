@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
-import Wowlist from './components/wowlist';
+import Wowlist from './components/wowlist/wowlist';
 import axios from 'axios';
-import Comment from './components/comment/comment';
+import Message from './components/message/message';
 import Header from './components/header/header';
+import ScrollUpButton from "react-scroll-up-button";
+import { CLIENT_RENEG_WINDOW } from 'tls';
 
-const baseUrl = "/api/comments"
+const baseUrl = "/api/storyboards"
 
 class App extends Component {
   constructor(){
     super(); 
     this.state = {
-      comments: [],
+      storyboards: [],
       expansion:'Vanilla',
       text:'',
+      boss: [],
+      randomBoss: []
     }
  }
 
@@ -29,59 +33,83 @@ class App extends Component {
     })
   }
 
-  postComment = () => {
+  postStory = () => {
    axios.post(baseUrl, {expansion: this.state.expansion, text: this.state.text}).then( response => 
       this.setState({
-        comments: response.data,
+        storyboards: response.data,
         })
-    ).catch(error => console.log( '-------postComment',error))
+    ).catch(error => console.log( '-------postStory',error))
   }
 
 
-  getUserComments = () => {
+  getUserStories = () => {
     axios.get(baseUrl).then(response => {
       this.setState({
-        comments: response.data
+        storyboards: response.data
       })
-    }).catch(error => console.log( '-------getUserComments',error))
+    }).catch(error => console.log( '-------getUserStories',error))
   }
 
-  deleteComment = (id) => {
+  deleteStory = (id) => {
     axios.delete(`${baseUrl}/${id}`).then(response => {
       this.setState({
-        comments: response.data
+        storyboards: response.data
       })
-    }).catch(error => console.log('-----deleteComment',error))
+    }).catch(error => console.log('-----deleteStory',error))
   }
   
-  editComment = (id, text) => {
+  editStory = (id, text) => {
     axios.put(`${baseUrl}/${id}`, {text}).then(response => {
       this.setState({
-        comments: response.data
+        storyboards: response.data
       })
-    }).catch(error => console.log('-----editComment',error))
+    }).catch(error => console.log('-----editStory',error))
   } 
   
-  filterComment = (expansion) => {
+  filterStory = (expansion) => {
     console.log('---expansion', expansion)
     axios.get(`${baseUrl}/search?expansion=${expansion}`).then(response => {
       this.setState({
-        comments: response.data
+        storyboards: response.data
       })
-  }).catch(error => console.log('-----filterComment',error))
-}  
+  }).catch(error => console.log('-----filterStory',error))
+  } 
+  
+  pickRandomBoss = () => {
+    let num = Math.floor(Math.random()* 709)
+    let randomBoss = this.state.boss.filter(e => e.id === num)
+    this.setState({
+      randomBoss: randomBoss
+    })
+      console.log('randomBoss', randomBoss)
+  }
+
+  componentDidMount() {
+    axios.get('https://us.api.battle.net/wow/boss/?locale=en_US&apikey=g59f3ye6npb82vwetwdhem3x6qyubd82').then(response => {
+      console.log( 'response from getBoss',response)
+   let bosses =  response.data.bosses.map((e,index) => {
+    return {id: index,name: e.name,description: e.description ? e.description : 'None'}
+    }) 
+    this.setState({
+      boss: bosses
+    })
+    console.log('bosses from external api',bosses)
+    })}
 
   render() {
-
+    const displayBoss = this.state.randomBoss
+    console.log(displayBoss)
+    // const name = displayBoss.name
+    
     return (
       <div>
         <Header headerName="Why I love World of Warcraft"/>
-        <Wowlist  filterComment={this.filterComment}/>
+        <Wowlist  filterStory={this.filterStory}/>
         <Header headerName="Post Your Story" />
         <div> 
         <p> Choose an expansion, then share your story</p>
         <br/>
-        <div className="commentLine">
+        <div className="storyLine">
         <select onChange={(e)=> this.selectedExpansionFunc(e.target.value)}>
           <option>Vanilla</option>
           <option>Burning Crusade</option>
@@ -91,14 +119,18 @@ class App extends Component {
           <option>Warlords of Draenor</option>
           <option>Legion</option>
         </select>
-        <textarea className="commentBox" onChange={(e)=> this.changeHandler(e.target.value)} placeholder="Write your story here">
+        <textarea className="storyBox" onChange={(e)=> this.changeHandler(e.target.value)} placeholder="Write your story here">
         </textarea>
-        <button className="standardButton" onClick={()=>this.postComment()}> Post Story</button>
-        <button className="standardButton" onClick={()=>this.getUserComments()}> Display all stories</button>
+        <button className="standardButton" onClick={()=>this.postStory()}> Post Story</button>
+        <button className="standardButton" onClick={()=>this.getUserStories()}> Display all stories</button>
         </div>
-         <div> {this.state.comments.map(comment => 
-          <Comment expansion={comment.expansion} id={comment.id} key={comment.id} text={comment.text} edit={this.editComment} remove={this.deleteComment}/>)} </div>
+         <div> {this.state.storyboards.map(story => 
+          <Message expansion={story.expansion} id={story.id} key={story.id} text={story.text} edit={this.editStory} remove={this.deleteStory}/>)} </div>
         </div>
+        <Header headerName="Boss List"/>
+        <button className="standardButton" onClick={() => this.pickRandomBoss()}>Get a random boss</button>
+        {this.state.randomBoss.map(e => <div>Name: {e.name} Description: {e.description}</div>)}
+        <ScrollUpButton/>
       </div>
     );
   }

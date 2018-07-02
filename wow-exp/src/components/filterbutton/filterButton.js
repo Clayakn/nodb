@@ -1,7 +1,7 @@
 import React from 'react';
-import './button.css';
+import './filterButton.css';
 
-const Button = (props) => {
+const filterButton = (props) => {
     return (
         <div>{console.log("button props",props)}
         <button  className={props.className}  onClick={() => {props.action(props.input)}}> {props.buttonName} </button>
@@ -9,4 +9,4 @@ const Button = (props) => {
     )
 }
 
-export default Button;
+export default filterButton;
