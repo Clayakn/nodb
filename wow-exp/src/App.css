@@ -4,17 +4,12 @@
 }
 
 body {
-    background-color: brown;
+    background-image: url('./image/Wow_wallpaper.jpg');
+    background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
 }
 
-header h1 {
-    color: #fff;
-    margin-bottom: 10px;
-    text-align: center;
-}
- 
 .comments {
     color: white;
  }
@@ -27,4 +22,9 @@ header h1 {
 .commentBox {
   height: 100px; 
   width: 500px;
+}
+.commentLine {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
 }

@@ -1,4 +1,97 @@
-button {
-    height: 40px;
-    width: 200px;
+.vanillaButton {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.vanillaButton:hover {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.bcButton {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.bcButton:hover {
+    background-color: green;
+    color: white;
+}
+
+.wrathButton {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.wrathButton:hover{
+    background-color: #3b5998;
+    color: white;
+}
+
+.cataButton {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.cataButton:hover{
+    background-color: goldenrod;
+    color: white;
+}
+
+.mopButton {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.mopButton:hover{
+    background-color: seagreen;
+    color: white;
+}
+
+.wodButton {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.wodButton:hover{
+    background-color: saddlebrown;
+    color: white;
+}
+
+.legionButton {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.legionButton:hover{
+    background-color: black;
+    color: white;
 }

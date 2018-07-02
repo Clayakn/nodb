@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './comment.css';
+import IoEdit from 'react-icons/lib/io/edit';
+import IoTrashA from 'react-icons/lib/io/trash-a';
 
 export default class Comment extends Component {
     constructor(props){
@@ -43,8 +45,8 @@ export default class Comment extends Component {
               :
                 <span className="Message__text">{expansion}: {text}</span>
             }
-            <span className="Message__edit" onClick={ () => this.setState({ editting: !this.state.editting, text}) } onKeyPress={this.edit}> <button className="button"> Edit </button> </span>
-            <span className="Message__delete" onClick={ () => remove( id ) }> <button className="button"> Delete</button> </span>
+            <span className="Message__edit" onClick={ () => this.setState({ editting: !this.state.editting, text}) } onKeyPress={this.edit}> <IoEdit/> </span>
+            <span className="Message__delete" onClick={ () => remove( id ) }> <IoTrashA/> </span>
           </div>
         )
       }

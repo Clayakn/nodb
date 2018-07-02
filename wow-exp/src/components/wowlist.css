@@ -8,11 +8,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* @font-face {
-  font-family: 'Genericons';
-  src: url('assets/genericons-regular-webfont.woff')format('woff'),
-  url('assets/genericons-regular-webfont.eot')format('truetype');
-} */
 
 .container {
   margin: 50px auto;
@@ -26,10 +21,11 @@ header h1 {
 }
 
 .accordion {
-  background: #333;
-  width: 100%;
+  background: transparent;
+  border: black groove 1px;
+  width: 72%;
   min-width: 800px;
-  display: block;
+  display: flex;
   list-style-type: none;
   overflow: hidden;
   height: 350px;
@@ -38,8 +34,8 @@ header h1 {
 
 .tab {
   display: inline-block;
-  background-color: #444;
-  border-right: #333 solid 1px;
+  background-color: transparent;
+  border: black groove 1px;
   width: 80px;
   height: 350px;
   overflow: hidden;
@@ -112,54 +108,74 @@ header h1 {
   margin-left: 85px;
 }
 
-.youtube a:before,
-.youtube a:after {
-  content: '\f120';
+.vanilla a:before {
+  content: '\f473';
+  background-color: transparent;
 }
 
-.youtube a:after {
-  background-color:red;
-}
-.twitter a:before,
-.twitter a:after {
-  content: '\f400';
+.vanilla a:after {
+  content: '\f403';
+  background-color:dodgerblue;
 }
 
-.twitter a:after {
-  background-color:#6dc5dd;
-}
-.facebook a:before,
-.facebook a:after {
-  content: '\f204';
+.crusade a:before {
+  content: '\f473';
+  background-color: transparent;
 }
 
-.facebook a:after {
+.crusade a:after {
+  content: '\f403';
+  background-color: green;
+}
+
+.wrath a:before {
+  content: '\f473';
+  background-color: transparent;
+}
+
+.wrath a:after {
+  content: '\f403';
   background-color:#3b5998;
 }
-.linkedin a:before,
-.linkedin a:after {
-  content: '\f208';
+
+.cata a:before {
+  content: '\f473';
+  background-color: transparent;
 }
 
-.linkedin a:after {
-  background-color:#00a9cd;
-}
-.instagram a:before,
-.instagram a:after {
-  content: '\f215';
+.cata a:after {
+  content: '\f403';
+  background-color: goldenrod;
 }
 
-.instagram a:after {
-  background-color:#6dc993;
-}
-.github a:before,
-.github a:after {
-  content: '\f200';
+.pandaria a:before {
+  content: '\f473';
+  background-color: transparent;
 }
 
-.github a:after {
-  background-color:#6e5494;
+.pandaria a:after {
+  content: '\f403';
+  background-color: seagreen;
 }
+
+.warlords a:before {
+  content: '\f473';
+  background-color: transparent;
+}
+.warlords a:after {
+  content: '\f403';
+  background-color: saddlebrown;
+}
+
+.legion a:before {
+  content: '\f473';
+  background-color: transparent;
+}
+.legion a:after {
+  content: '\f403';
+  background-color: black;
+}
+
 
 @media(max-width:950px){
   .container {

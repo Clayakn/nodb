@@ -3,6 +3,7 @@ import './App.css';
 import Wowlist from './components/wowlist';
 import axios from 'axios';
 import Comment from './components/comment/comment';
+import Header from './components/header/header';
 
 const baseUrl = "/api/comments"
 
@@ -34,7 +35,6 @@ class App extends Component {
         comments: response.data,
         })
     ).catch(error => console.log( '-------postComment',error))
-    this.setState({text: '',});
   }
 
 
@@ -75,17 +75,13 @@ class App extends Component {
 
     return (
       <div>
-        <header>
-        <h1> Why I love World of Warcraft </h1>
-        </header>
+        <Header headerName="Why I love World of Warcraft"/>
         <Wowlist  filterComment={this.filterComment}/>
-        <header>
-        <h1> Post Your Story </h1>
-        </header>
+        <Header headerName="Post Your Story" />
         <div> 
-        <button className="standardButton" onClick={()=>this.getUserComments()}> Show all Comments</button>
-        <p> Choose an expansion, then make a comment</p>
+        <p> Choose an expansion, then share your story</p>
         <br/>
+        <div className="commentLine">
         <select onChange={(e)=> this.selectedExpansionFunc(e.target.value)}>
           <option>Vanilla</option>
           <option>Burning Crusade</option>
@@ -95,9 +91,11 @@ class App extends Component {
           <option>Warlords of Draenor</option>
           <option>Legion</option>
         </select>
-        <textarea className="commentBox" onChange={(e)=> this.changeHandler(e.target.value)} placeholder="Place your comment here">
+        <textarea className="commentBox" onChange={(e)=> this.changeHandler(e.target.value)} placeholder="Write your story here">
         </textarea>
-        <button className="standardButton" onClick={()=>this.postComment()}> Post Comment</button>
+        <button className="standardButton" onClick={()=>this.postComment()}> Post Story</button>
+        <button className="standardButton" onClick={()=>this.getUserComments()}> Display all stories</button>
+        </div>
          <div> {this.state.comments.map(comment => 
           <Comment expansion={comment.expansion} id={comment.id} key={comment.id} text={comment.text} edit={this.editComment} remove={this.deleteComment}/>)} </div>
         </div>
