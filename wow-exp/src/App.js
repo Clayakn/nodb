@@ -5,7 +5,6 @@ import axios from 'axios';
 import Message from './components/message/message';
 import Header from './components/header/header';
 import ScrollUpButton from "react-scroll-up-button";
-import { CLIENT_RENEG_WINDOW } from 'tls';
 
 const baseUrl = "/api/storyboards"
 
@@ -128,8 +127,8 @@ class App extends Component {
           <Message expansion={story.expansion} id={story.id} key={story.id} text={story.text} edit={this.editStory} remove={this.deleteStory}/>)} </div>
         </div>
         <Header headerName="Boss List"/>
-        <button className="standardButton" onClick={() => this.pickRandomBoss()}>Get a random boss</button>
-        {this.state.randomBoss.map(e => <div>Name: {e.name} Description: {e.description}</div>)}
+        <button className="bossButton" onClick={() => this.pickRandomBoss()}>Get a random boss</button>
+        {this.state.randomBoss.map(e => <div className="bossPanel"><p className="bossName"> {e.name}</p> <p className="descriptionHeader">Description:</p> {e.description}</div>)}
         <ScrollUpButton/>
       </div>
     );

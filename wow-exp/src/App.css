@@ -5,6 +5,7 @@
 
 body {
     background-image: url('./image/Wow_wallpaper.jpg');
+    background-attachment: fixed;
     background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
@@ -13,6 +14,11 @@ body {
 .standardButton {
     height: 50px;
     width: 100px;
+}
+
+.bossButton {
+    height: 50px;
+    width: 150px;
 }
 
 .storyBox {
@@ -25,3 +31,24 @@ body {
     display: flex;
     justify-content: space-between;;
 }
+
+.bossPanel {
+        margin-top: 10px;
+        background: #fff;
+        border-radius: 3px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+        color: black;
+        width: 60%;
+}
+
+.bossName {
+    background-color: gold;
+    text-transform: uppercase;
+    height: 25px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .descriptionHeader {
+      text-decoration-line: underline;
+  }

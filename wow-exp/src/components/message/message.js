@@ -37,13 +37,13 @@ export default class Message extends Component {
         console.log('----this.props',this.props)
         const { editting } = this.state;
         return (
-          <div>
+          <div className="Message_container">
             {
               editting
               ?
                 <input className="Message__input" value={ this.state.text } onChange={ this.changeHandle } onKeyPress={this.edit}/>
               :
-                <span className="Message__text">{expansion}: {text}</span>
+                <span className="Message__text"><p className="expansionName">{expansion}</p> {text}</span>
             }
             <span className="Message__edit" onClick={ () => this.setState({ editting: !this.state.editting, text}) } onKeyPress={this.edit}> <IoEdit/> </span>
             <span className="Message__delete" onClick={ () => remove( id ) }> <IoTrashA/> </span>
