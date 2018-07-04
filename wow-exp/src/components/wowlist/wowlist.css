@@ -109,7 +109,7 @@ header h1 {
 }
 
 .vanilla a:before {
-  content: '\f473';
+  content: '\f404';
   background-color: transparent;
 }
 
@@ -119,7 +119,7 @@ header h1 {
 }
 
 .crusade a:before {
-  content: '\f473';
+  content: '\f404';
   background-color: transparent;
 }
 
@@ -129,7 +129,7 @@ header h1 {
 }
 
 .wrath a:before {
-  content: '\f473';
+  content: '\f404';
   background-color: transparent;
 }
 
@@ -139,7 +139,7 @@ header h1 {
 }
 
 .cata a:before {
-  content: '\f473';
+  content: '\f404';
   background-color: transparent;
 }
 
@@ -149,7 +149,7 @@ header h1 {
 }
 
 .pandaria a:before {
-  content: '\f473';
+  content: '\f404';
   background-color: transparent;
 }
 
@@ -159,7 +159,7 @@ header h1 {
 }
 
 .warlords a:before {
-  content: '\f473';
+  content: '\f404';
   background-color: transparent;
 }
 .warlords a:after {
@@ -168,7 +168,7 @@ header h1 {
 }
 
 .legion a:before {
-  content: '\f473';
+  content: '\f404';
   background-color: transparent;
 }
 .legion a:after {

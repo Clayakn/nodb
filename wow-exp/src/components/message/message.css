@@ -11,7 +11,8 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
-    color: black;
+    color: black; 
+    box-shadow: 5px 5px;
   }
 
   .Message__edit {
@@ -39,7 +40,8 @@
   }
 
   .expansionName {
-    background-color: gold;
+    background-color: #f7b10a;
+    border-radius: 3px;
     text-transform: uppercase;
     height: 25px;
     font-weight: bold;
